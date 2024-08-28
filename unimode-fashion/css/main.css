@@ -1,0 +1,687 @@
+
+* {
+  box-sizing: border-box; /* 追加: パディングとボーダーを含めたレイアウト計算 */
+}
+
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* 追加: 横スクロールを防止 */
+  background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+}
+
+
+a {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+img {
+  max-width: 100%;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+.main-text {
+  text-align: center;
+  margin:3rem auto;
+  font-size:1.5rem;
+  background: #121212;
+  color:white;
+  width:50%;
+}
+
+li {
+  list-style: none;
+}
+
+.site-title {
+  line-height: 1px;
+}
+
+.site-title a {
+  display: block;
+}
+
+.sec-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.fadein {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s;
+}
+
+video {
+  max-width: 100%;
+  width: 100%;
+  max-height:100%;
+  object-fit: cover; /* カバー方法を設定 */
+  margin-top:0;
+}
+
+.item-cat {
+  background: #000;
+  color:white;
+  width:70%;
+  padding:8px;
+  padding-left:0.5rem;
+  border-radius: 10px;
+}
+
+
+
+.item-text {
+  padding-left:0.5rem;
+}
+
+
+.item-date {
+  text-align: right;
+}
+
+
+/* コンテンツ */
+.contents {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* 追加: パディングとボーダーを含めたレイアウト計算 */
+}
+
+
+/* ヘッダー */
+#item-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#logo {
+  width: 110px;
+  height: auto; /* 必要に応じて高さを調整してください */
+}
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: end; /* 垂直方向に中央揃え */
+  justify-content: space-between; /* 水平方向にスペースを均等に配置 */
+  padding: 20px 16px;
+  position: fixed;
+  z-index: 10;
+  background: linear-gradient(-225deg, rgba(44, 216, 213,0.5) 0%, rgba(197, 193, 255,0.5) 56%, rgb(255, 186, 195,0.5) 100%);
+}
+
+#navi {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  width: 300px;
+  color: #fff;
+  padding: 60px 25px;
+  background-color: #121212;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: all .5s;
+  z-index: 20;
+  opacity: 0;
+}
+
+#navi a {
+  color: #fff;
+}
+
+.open #navi {
+  left: 0;
+  opacity: 1;
+}
+
+#navi ul {
+  margin: 0;
+  padding: 0;
+}
+
+#navi ul.nav-menu {
+  margin-bottom: 60px;
+  border-top: solid 1px #fff;
+}
+
+#navi ul.nav-menu li {
+  position: relative;
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: solid 1px #fff;
+}
+
+#navi ul.nav-sns li {
+  padding: 5px 0;
+}
+
+.toggle_btn {
+  display: block;
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  transition: all .5s;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.toggle_btn span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 4px;
+  transition: all .5s;
+}
+
+.toggle_btn span:nth-child(1) {
+  top: 4px;
+}
+
+.toggle_btn span:nth-child(2) {
+  top: 14px;
+}
+
+.toggle_btn span:nth-child(3) {
+  bottom: 4px;
+}
+
+.open .toggle_btn span {
+  background-color: #fff;
+}
+
+.open .toggle_btn span:nth-child(1) {
+  transform: translateY(10px) rotate(-315deg);
+}
+
+.open .toggle_btn span:nth-child(2) {
+  opacity: 0;
+}
+
+.open .toggle_btn span:nth-child(3) {
+  transform: translateY(-10px) rotate(315deg);
+}
+
+#mask {
+  display: none;
+  transition: all .5s;
+}
+
+.open #mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .8;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* メインビデオ */
+#main-video {
+  margin-bottom:8%;
+}
+
+/* pick up */
+#PICK-UP {
+  margin-top:-3rem;
+}
+
+/* カルーセル */
+.carousel-img {
+  width: 90%;
+  margin: auto;
+}
+
+/* snap */
+.grid2 {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  padding: 0;
+  margin:1rem;
+}
+
+
+
+/* EC */
+#ec,#ec-collabo,#coordination-make{
+  padding: 0 1rem; /* セクション全体に左右の余白を追加 */
+}
+
+.grid {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 自動調整のための設定 */
+  gap: 35px;
+  padding: 0;
+  margin: 1rem;
+  max-width: 100%;
+
+}
+
+#ec .grid .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+.item {
+  height: 100%;
+  border: grey solid 5px;
+}
+
+#ec .grid img {
+  vertical-align: top;
+}
+
+#ec .grid .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+#ec .grid .item-cat {
+  margin-bottom: 0px;
+}
+
+#ec .grid .item-text {
+  margin-bottom: 0px;
+}
+
+#fec .grid .item-date {
+  margin-bottom: 20px; /* 必要ならば他の要素との間に空白を追加 */
+}
+
+/* ECコラボ */
+#ec-collabo .grid .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+/* コーディネート&メイク*/
+/* 他のスタイルはそのまま維持 */
+#coordination-make .grid .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+.main-text2 {
+  width:80%;
+}
+
+
+/* セクションのスタイルを修正 */
+#coordination {
+  margin-top: 0; /* 必要に応じて変更 */
+  padding-top: 0; /* 必要に応じて変更 */
+}
+
+/* グリッドとアイテムのスタイルを修正 */
+.grid {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  padding: 0;
+  margin: 0;  /* トップマージンを削除 */
+}
+
+/* ビデオスタイルの修正 */
+/* .video-5 {
+  max-width: 100%;
+  width: 100%;
+  max-height: 100%;
+  height: auto;
+  margin: 0; /* 追加: マージンをリセット */
+  /* margin-top: 0; 追加: 必要に応じてトリミング */
+/* } */
+
+.coordination-make-img {
+  max-width: 100%;
+  width: 100%;
+  max-height: 100%;
+  height: auto;
+  margin: 0; /* 追加: マージンをリセット */
+  margin-top: 0; 
+}
+
+/* ビデオアイテムのスタイル */
+.item {
+  width: 100%; 
+  margin: 0; /* 他のマージンをリセット */
+  padding: 0; /* パディングをリセット */
+}
+
+
+
+/* ファションショーとブランド */
+.grid3 {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  padding: 0;
+  margin: 1rem;
+}
+
+#feature .grid3 .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+/* アイデアノート */
+.grid4 {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  padding: 0;
+  margin: 1rem;
+}
+
+#idea-notes .grid4 .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+/* 補装具 */
+#prosthetics .grid4 .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+/* マップ */
+#map {
+  width: 100%;
+  height:100vw;
+}
+
+.grid5 {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  padding: 0;
+  margin: 1rem;
+}
+
+#Map .grid5 .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+
+#prosthetics .grid4 .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+/* 協賛企業 */
+#sponsors .grid4 .item-content {
+  padding: 10px;
+  text-align: left;
+  letter-spacing: 0.1em; /* 文字間隔を均一に設定 */
+  line-height: 5vw;
+  margin-left:0.1rem;
+}
+
+
+
+
+/* フッター */
+footer {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 550px;
+  padding-top: 0.2rem;
+}
+
+#contact-text {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.type-text {
+  width: 100%;
+  height: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 50px;
+}
+
+.contact-submit {
+  width: 100%;
+  height: 30px;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+#ec-collabo .grid .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+#feature .grid3 .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+#idea-notes .grid4 .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+
+#prosthetics .grid4 .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+#Map .grid5 .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+
+#sponsors .grid4 .item {
+  transition: all 0.3s ease;
+  background-color:white;
+}
+
+
+
+/* PC用 */
+@media screen and (min-width: 866px) {
+
+
+* {
+  box-sizing: border-box; /* 追加: パディングとボーダーを含めたレイアウト計算 */
+}
+
+  body {
+      padding: 0;
+      margin: auto;
+  }
+
+  #logo {
+    width: 200px;
+    height: auto; /* 必要に応じて高さを調整してください */
+  }
+
+  .toggle_btn {
+    display: block;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    transition: all .5s;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  video {
+    max-width: 100%;
+    width:100%;
+    height: 960px;
+    margin:0;
+  }
+
+  .item-text {
+    padding-left:0;
+  }
+
+  .sec-title {
+      font-size: 2.25rem;
+      margin-bottom: 30px;
+  }
+
+  #header {
+      padding: 20px 40px;
+  }
+
+  .toggle_btn {
+      right: 45px;
+  }
+
+  .main-text {
+    width:20%;
+  }
+
+
+  /* pick up */
+#PICK-UP {
+  margin:0;
+  margin-top:-5rem;
+}
+
+/* スナップ */
+.grid2 {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  padding: 0;
+  margin:auto 3rem;
+}
+
+  .grid {
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 35px;
+      padding: 0;
+  }
+
+    /* FEATURE */
+    .grid3,.grid4,.grid5{
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 35px;
+      padding: 0;
+  }
+
+  #feature {
+      margin: auto 1rem 1rem 1rem;
+  }
+
+  #contact-text {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  #cantact-form {
+      margin-right: 10%;
+  }
+
+  .type-text {
+      padding-right: 100%;
+  }
+
+  textarea {
+      padding-right: 100%;
+      padding-bottom: 3rem;
+  }
+
+#navi ul.nav-menu {
+  margin-bottom: 0; /* 余計な空白を削除 */
+}
+
+#navi ul.nav-sns {
+  padding-top: 30px; /* メニューとSNSリストの間に隙間を追加 */
+  border-top: solid 1px #fff; /* 境界線を追加 */
+}
+
+.main-text2 {
+  width:30%;
+}
+
+.item-cat {
+  background: #000;
+  color:white;
+  width:90%;
+  padding:10px;
+  padding-left:1rem;
+  border-radius: 10px;
+}
+}
